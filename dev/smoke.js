@@ -12,8 +12,9 @@ const log = {
 };
 
 const cfg = JSON.parse(fs.readFileSync(process.env.HB_CONFIG || '/var/lib/homebridge/config.json', 'utf8'));
-const plat = (cfg.platforms || []).find((p) => p.platform === 'SmartHQ' && p.credentials) || {};
-const cred = plat.credentials || {};
+const plat = (cfg.platforms || []).find((p) => p.platform === 'GEProfileAC')
+  || (cfg.platforms || []).find((p) => p.platform === 'SmartHQ') || {};
+const cred = plat.credentials || plat; // GEProfileAC stores username/password at top level
 if (!cred.username) { console.error('no SmartHQ creds in config'); process.exit(1); }
 
 const TEST_F = parseInt(process.env.TEST_F || '74', 10);

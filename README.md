@@ -1,8 +1,25 @@
 # homebridge-ge-ac
 
-A [Homebridge](https://homebridge.io) plugin for **GE Profile / SmartHQ Wi‑Fi window air conditioners**
-(e.g. the GE Profile ClearView **AHTT06BC**), exposing them to HomeKit with **reliable** setpoint,
-mode, and fan control.
+A [Homebridge](https://homebridge.io) plugin for **GE SmartHQ Wi‑Fi window air conditioners**,
+exposing them to HomeKit with **reliable** setpoint, mode, and fan control over GE's realtime
+WebSocket channel.
+
+> **Compatibility — please read.** This was built and tested against a single unit: the GE Profile
+> ClearView **AHTT06BC** (a *cooling‑only* window AC). The SmartHQ protocol and ERD codes it uses are
+> shared across GE's smart window/room AC line, so it will **probably** work on similar **cooling‑only
+> GE Wi‑Fi window ACs** — but that is **unverified**, and a few things are currently assumed to match
+> the AHTT06BC:
+> - **Cooling only** — Heat is intentionally not exposed (the thermostat is locked to Cool and there
+>   is no Heat switch). A heat/cool model would lose heat control.
+> - **64–86 °F** target range is hard‑coded.
+> - **Modes** (Cool / Fan / Energy Saver / Dry) and **fan speeds** (Auto / Low / Med / High) are
+>   assumed, not detected per model.
+> - **Swing** is not exposed; **portable** and **split / mini‑split** ACs use a different ERD layout
+>   and are **not** expected to work.
+>
+> If you try it on another model, a report (works / doesn't, and which model) via a
+> [GitHub issue](https://github.com/fabricore-eng/homebridge-ge-ac/issues) is very welcome — that's
+> how this grows beyond one unit.
 
 ## Why this exists
 

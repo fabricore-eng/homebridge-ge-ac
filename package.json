@@ -1,8 +1,8 @@
 {
   "name": "homebridge-ge-ac",
   "displayName": "GE Profile AC (SmartHQ WebSocket)",
-  "version": "1.0.0",
-  "description": "Homebridge plugin for GE Profile / SmartHQ Wi-Fi window air conditioners, using the realtime WebSocket control channel for reliable setpoint/mode/fan control.",
+  "version": "1.0.1",
+  "description": "Homebridge plugin for GE SmartHQ Wi-Fi window air conditioners over GE's realtime WebSocket channel (reliable setpoint/mode/fan control). Built and tested on the cooling-only GE Profile AHTT06BC; likely works on similar GE Wi-Fi window ACs (unverified).",
   "author": "Fabricore",
   "license": "ISC",
   "homepage": "https://github.com/fabricore-eng/homebridge-ge-ac#readme",

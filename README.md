@@ -4,21 +4,27 @@ A [Homebridge](https://homebridge.io) plugin for **GE SmartHQ Wi‑Fi window air
 exposing them to HomeKit with **reliable** setpoint, mode, and fan control over GE's realtime
 WebSocket channel.
 
-> **Compatibility — please read.** This was built and tested against a single unit: the GE Profile
-> ClearView **AHTT06BC** (a *cooling‑only* window AC). The SmartHQ protocol and ERD codes it uses are
-> shared across GE's smart window/room AC line, so it will **probably** work on similar **cooling‑only
-> GE Wi‑Fi window ACs** — but that is **unverified**, and a few things are currently assumed to match
-> the AHTT06BC:
-> - **Cooling only** — Heat is intentionally not exposed (the thermostat is locked to Cool and there
->   is no Heat switch). A heat/cool model would lose heat control.
-> - **64–86 °F** target range is hard‑coded.
-> - **Modes** (Cool / Fan / Energy Saver / Dry) and **fan speeds** (Auto / Low / Med / High) are
->   assumed, not detected per model.
-> - **Swing** is not exposed; **portable** and **split / mini‑split** ACs use a different ERD layout
+> **Compatibility — please read.** This was built and **tested on one unit**: the GE Profile
+> ClearView **AHTT06BC** (a *cooling‑only* window AC). The SmartHQ protocol and ERD codes are shared
+> across GE's smart window/room AC line, so it will **probably** work on similar GE Wi‑Fi window ACs —
+> but anything beyond the AHTT06BC is **unverified**. How it adapts:
+> - **Temperature range** is read from the unit (`0x7B06`) — no longer hard‑coded — falling back to
+>   64–86 °F if the unit doesn't report one.
+> - **Cooling-only units** (no heating setpoint reported) get a Cool thermostat + Cool/Fan/Energy‑Saver/Dry
+>   switches. This is the **tested** path.
+> - **Heat/cool units** — ⚠️ **experimental, untested.** If the unit reports a heating setpoint
+>   (`0x7002`), the plugin also exposes a Heat thermostat mode, a heating setpoint, and a Heat switch.
+>   No heat‑capable unit was available to test, and the heat setpoint encoding is assumed to match the
+>   (verified) cool one. **If you have a heat/cool GE smart AC, please test and
+>   [open an issue](https://github.com/fabricore-eng/homebridge-ge-ac/issues) with what works or breaks.**
+> - **Modes**: the per‑model "available modes" ERD (`0x7B00`) is **deliberately ignored** — GE window
+>   ACs report a value that doesn't match the documented bitmask. The standard four switches are always
+>   shown; an `Auto` operation mode (if a unit uses it) isn't represented in the thermostat.
+> - **Swing** isn't exposed; **portable** and **split / mini‑split** ACs use a different ERD layout
 >   and are **not** expected to work.
 >
-> If you try it on another model, a report (works / doesn't, and which model) via a
-> [GitHub issue](https://github.com/fabricore-eng/homebridge-ge-ac/issues) is very welcome — that's
+> Reports for any other model (works / doesn't + the model number) via a
+> [GitHub issue](https://github.com/fabricore-eng/homebridge-ge-ac/issues) are very welcome — that's
 > how this grows beyond one unit.
 
 ## Why this exists

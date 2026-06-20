@@ -1,0 +1,34 @@
+{
+  "pluginAlias": "GEProfileAC",
+  "pluginType": "platform",
+  "singular": true,
+  "headerDisplay": "Controls a GE Profile / SmartHQ Wi-Fi window air conditioner over GE's realtime WebSocket channel (reliable setpoint, mode, and fan control). Enter the same email + password you use in the GE SmartHQ app.",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "name": {
+        "title": "Accessory Name",
+        "type": "string",
+        "default": "Air Conditioner",
+        "description": "Name shown in HomeKit (you can also rename it in the Home app)."
+      },
+      "username": {
+        "title": "SmartHQ Email",
+        "type": "string",
+        "required": true,
+        "format": "email"
+      },
+      "password": {
+        "title": "SmartHQ Password",
+        "type": "string",
+        "required": true,
+        "x-schema-form": { "type": "password" }
+      },
+      "macAddress": {
+        "title": "Appliance ID / MAC (optional)",
+        "type": "string",
+        "description": "Only needed if more than one appliance is on the account. Leave blank to auto-detect the air conditioner."
+      }
+    }
+  }
+}

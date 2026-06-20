@@ -1,0 +1,24 @@
+{
+  "name": "homebridge-ge-ac",
+  "displayName": "GE Profile AC (SmartHQ WebSocket)",
+  "version": "1.0.0",
+  "description": "Homebridge plugin for GE Profile / SmartHQ Wi-Fi window air conditioners, using the realtime WebSocket control channel for reliable setpoint/mode/fan control.",
+  "license": "ISC",
+  "main": "index.js",
+  "engines": {
+    "node": ">=18.0.0",
+    "homebridge": ">=1.6.0"
+  },
+  "keywords": [
+    "homebridge-plugin",
+    "ge",
+    "smarthq",
+    "air-conditioner",
+    "geappliances"
+  ],
+  "dependencies": {
+    "axios": "^1.7.0",
+    "cheerio": "^1.0.0",
+    "ws": "^8.18.0"
+  }
+}

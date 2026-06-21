@@ -11,9 +11,6 @@ All notable changes to this project are documented here. This project follows
   to the canonical `ConfiguredName` pattern (declare as optional + set a plain writable value, no
   `onGet` override) so the Home app reliably reads the real names and user renames survive restarts.
 
-### Changed
-- The **Fan** tile now sits right after the thermostat (before the mode switches).
-
 ## [1.2.0] - 2026-06-21
 
 ### Added

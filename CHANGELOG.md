@@ -4,6 +4,15 @@ All notable changes to this project are documented here. This project follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.2] - 2026-06-21
+
+### Fixed
+- Scenes & automations that set several things at once (power + mode + temperature + fan) now apply
+  reliably. Writes are **serialized and coalesced** per appliance, so HomeKit's simultaneous burst no
+  longer produces `superseded` failures or leaves the unit half-configured. Power is sent first, and
+  when a burst contains both a power-on and a power-off, **on wins** — so a turn-on scene can no longer
+  be flipped off by a deselected mode switch's stale power-off write.
+
 ## [1.2.1] - 2026-06-21
 
 ### Fixed
@@ -56,6 +65,7 @@ All notable changes to this project are documented here. This project follows
 - Resilience: app-level keepalive, OAuth token refresh ahead of expiry, and
   exponential-backoff auto-reconnect.
 
+[1.2.2]: https://github.com/fabricore-eng/homebridge-ge-ac/releases/tag/v1.2.2
 [1.2.1]: https://github.com/fabricore-eng/homebridge-ge-ac/releases/tag/v1.2.1
 [1.2.0]: https://github.com/fabricore-eng/homebridge-ge-ac/releases/tag/v1.2.0
 [1.1.0]: https://github.com/fabricore-eng/homebridge-ge-ac/releases/tag/v1.1.0

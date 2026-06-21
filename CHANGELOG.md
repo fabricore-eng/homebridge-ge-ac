@@ -4,6 +4,16 @@ All notable changes to this project are documented here. This project follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.1] - 2026-06-21
+
+### Fixed
+- Mode switches could show as generic "Switch 1/2/3" in the Home app after re-pairing. Switched
+  to the canonical `ConfiguredName` pattern (declare as optional + set a plain writable value, no
+  `onGet` override) so the Home app reliably reads the real names and user renames survive restarts.
+
+### Changed
+- The **Fan** tile now sits right after the thermostat (before the mode switches).
+
 ## [1.2.0] - 2026-06-21
 
 ### Added
@@ -49,6 +59,7 @@ All notable changes to this project are documented here. This project follows
 - Resilience: app-level keepalive, OAuth token refresh ahead of expiry, and
   exponential-backoff auto-reconnect.
 
+[1.2.1]: https://github.com/fabricore-eng/homebridge-ge-ac/releases/tag/v1.2.1
 [1.2.0]: https://github.com/fabricore-eng/homebridge-ge-ac/releases/tag/v1.2.0
 [1.1.0]: https://github.com/fabricore-eng/homebridge-ge-ac/releases/tag/v1.1.0
 [1.0.0]: https://github.com/fabricore-eng/homebridge-ge-ac/releases/tag/v1.0.0

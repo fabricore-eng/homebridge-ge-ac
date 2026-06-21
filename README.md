@@ -48,7 +48,10 @@ the unit echoes the change back on `publish#erd`.
   Setpoint changes **stick**.
 - **Mode switches** with real names: Cool, Fan Only, Energy Saver, Dry. (No bogus "Heat" — these
   are cooling-only units. Each switch sets `ConfiguredName`, so HomeKit never shows "Switch 1–5".)
-- **Fan speed** via the rotation-speed slider (Auto / Low / Med / High).
+- **Fan speed** as a dedicated **Fan** accessory — an **Auto ⇄ Manual** toggle plus a Low/Med/High
+  speed slider, mirroring the GE app's Auto/Low/Med/High. (Apple's Home app won't render fan speed on
+  a thermostat tile, so it's exposed as its own Fan service on the same accessory — it groups with the
+  AC rather than appearing as the thermostat's rotation-speed slider.)
 - **Live updates** — state is pushed from the WebSocket subscription, so HomeKit reflects changes
   made in the GE app or on the unit, in real time.
 - Resilient: app‑level keepalive, OAuth token refresh ahead of expiry, and exponential‑backoff

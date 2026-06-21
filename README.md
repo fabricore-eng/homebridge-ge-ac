@@ -103,6 +103,10 @@ The GE SmartHQ / Brillion protocol details (OAuth flow, WebSocket envelopes, ERD
 encodings) were derived from the excellent [`simbaja/gehome`](https://github.com/simbaja/gehome)
 Python library. This plugin is an independent JavaScript implementation.
 
+## Changelog
+
+See [CHANGELOG.md](CHANGELOG.md) for per-release notes.
+
 ## License
 
 ISC — see [LICENSE](LICENSE).
